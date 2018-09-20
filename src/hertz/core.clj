@@ -28,7 +28,8 @@
                      (println "\033[1;31mIncorrect answer format, number expected.\033[0m")
                      (recur)))
                  (catch NumberFormatException _ (do
-                                                  (println "\033[1;31mIncorrect answer format, number expected.\033[0m"))))))))
+                                                  (println "\033[1;31mIncorrect answer format, number expected.\033[0m")
+                                                  (ask-tone note))))))))
 
 (defn -main
   [& _]
