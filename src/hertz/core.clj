@@ -1,11 +1,14 @@
-(ns hertz.core
-  (:require [clojure.edn :as edn]
-            [clojure.string :as str]
-            [hertz.frequencies :as f]
-            [overtone.live :as otl]
-            [try-let :refer [try-let]])
-  (:use [overtone.core])
-  (:gen-class))
+(println "Waiting for SuperCollider to initialize...")
+
+(with-out-str
+  (ns hertz.core
+    (:require [clojure.edn :as edn]
+              [clojure.string :as str]
+              [hertz.frequencies :as f]
+              [overtone.live :as otl]
+              [try-let :refer [try-let]])
+    (:use [overtone.core])
+    (:gen-class)))
 
 (defn ask-tone [note]
   (println (format "Frequency of note %s?" (:note-name note)))
@@ -35,5 +38,5 @@
   [& _]
   (println "\033[30m\u001B[4;43mHertz\u001B[0m")
   (loop []
-    (ask-tone (rand-nth f/freqs))
+    (ask-tone (rand-nth f/piano-notes))
     (recur)))
