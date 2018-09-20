@@ -10,14 +10,18 @@
     (:use [overtone.core])
     (:gen-class)))
 
+(defn play-note [note]
+  (otl/demo 2 (otl/sin-osc (:frequency note) 0.0 1 0)))
+
 (defn ask-tone [note]
   (println (format "Frequency of note %s?" (:note-name note)))
-  (otl/demo 2 (otl/sin-osc (:frequency note) 0.0 1 0))
+  (play-note note)
   (loop []
     (let [answer-line (read-line)]
       (if (str/blank? (str/trim answer-line))
         (do
-          (otl/demo 2 (otl/sin-osc (:frequency note) 0.0 1 0))
+          (println (format "Pressing enter without typing anything repeats the tone, which was %s." (:note-name note)))
+          (play-note note)
           (recur))
         (try-let [answer (edn/read-string answer-line)]
                  (if (number? answer)
