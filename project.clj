@@ -7,6 +7,8 @@
                  [overtone "0.10.3"]
                  [try-let "1.2.0"]]
   :main ^:skip-aot hertz.core
+  :native-path "native"
   :target-path "target/%s"
   :jvm-opts ^:replace []
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  :repl-options {:timeout 120000})
