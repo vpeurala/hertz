@@ -1,28 +1,38 @@
 (ns hertz.core
   (:require [clojure.edn :as edn]
-            [clojure.term.colors :as c]
+            [clojure.string :as str]
             [hertz.frequencies :as f]
             [overtone.live :as otl]
             [try-let :refer [try-let]])
   (:use [overtone.core])
   (:gen-class))
 
+(defn ask-tone [note]
+  (println (format "Frequency of note %s?" (:note-name note)))
+  (otl/demo 2 (otl/sin-osc (:frequency note) 0.0 1 0))
+  (loop []
+    (let [answer-line (read-line)]
+      (if (str/blank? (str/trim answer-line))
+        (do
+          (otl/demo 2 (otl/sin-osc (:frequency note) 0.0 1 0))
+          (recur))
+        (try-let [answer (edn/read-string answer-line)]
+                 (if (number? answer)
+                   (if
+                     (= (double answer) (:frequency note))
+                     (println "\033[1;32mCorrect!\033[0m")
+                     (println (format "\033[1;31mWrong! The correct frequency for %s is %.2f!\033[0m"
+                                      (:note-name note)
+                                      (:frequency note))))
+                   (do
+                     (println "\033[1;31mIncorrect answer format, number expected.\033[0m")
+                     (recur)))
+                 (catch NumberFormatException _ (do
+                                                  (println "\033[1;31mIncorrect answer format, number expected.\033[0m"))))))))
+
 (defn -main
   [& _]
-  (println (c/yellow (c/underline "Hertz")))
+  (println "\033[30m\u001B[4;43mHertz\u001B[0m")
   (loop []
-    (let [note (rand-nth f/freqs)]
-      (println (format "Frequency of note %s?" (:note-name note)))
-      (otl/demo 2 (otl/sin-osc (:frequency note) 0.0 1 0))
-      (try-let [answer (edn/read-string (read-line))]
-               (if (number? answer)
-                 (if
-                   (= (double answer) (:frequency note))
-                   (println (c/green "Correct!"))
-                   (println (c/red
-                              (format "Wrong! The correct frequency for %s is %.2f!"
-                                      (:note-name note)
-                                      (:frequency note)))))
-                 (println (c/red (c/bold "Incorrect answer format, number expected."))))
-               (catch NumberFormatException _ (println (c/red (c/bold "Incorrect answer format, number expected."))))))
+    (ask-tone (rand-nth f/freqs))
     (recur)))
