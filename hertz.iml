@@ -16,6 +16,7 @@
     <orderEntry type="library" name="Leiningen: clj-glob:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: clj-native:0.9.5" level="project" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.4" level="project" />
+    <orderEntry type="library" name="Leiningen: clojure-term-colors:0.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: commons-net:3.0.1" level="project" />
     <orderEntry type="library" name="Leiningen: javax.jmdns/jmdns:3.4.1" level="project" />
     <orderEntry type="library" name="Leiningen: net.java.dev.jna/jna:4.1.0" level="project" />
