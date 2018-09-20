@@ -6,12 +6,13 @@
               [clojure.string :as str]
               [hertz.frequencies :as f]
               [overtone.live :as otl]
+              [overtone.inst.sampled-piano :as sp]
               [try-let :refer [try-let]])
     (:use [overtone.core])
     (:gen-class)))
 
 (defn play-note [note]
-  (otl/demo 2 (otl/sin-osc (:frequency note) 0.0 1 0)))
+  (sp/sampled-piano :note (:midi-note-number note) :level 1 :decay 0.2 :sustain 0.2))
 
 (defn ask-tone [note]
   (println (format "Frequency of note %s?" (:note-name note)))
