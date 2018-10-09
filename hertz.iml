@@ -13,16 +13,19 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Leiningen: cider/cider-nrepl:0.18.0" level="project" />
     <orderEntry type="library" name="Leiningen: clj-glob:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: clj-native:0.9.5" level="project" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.4" level="project" />
     <orderEntry type="library" name="Leiningen: commons-net:3.0.1" level="project" />
     <orderEntry type="library" name="Leiningen: javax.jmdns/jmdns:3.4.1" level="project" />
     <orderEntry type="library" name="Leiningen: net.java.dev.jna/jna:4.1.0" level="project" />
+    <orderEntry type="library" name="Leiningen: nrepl:0.4.4" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.9.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.1.24" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.json:0.2.6" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.1.143" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.logging:0.4.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.12" level="project" />
     <orderEntry type="library" name="Leiningen: overtone/at-at:1.2.0" level="project" />
     <orderEntry type="library" name="Leiningen: overtone/byte-spec:0.3.1" level="project" />
